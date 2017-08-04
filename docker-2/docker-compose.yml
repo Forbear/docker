@@ -1,0 +1,16 @@
+version: '3'
+services:
+ jenkins:
+   image: jenkins
+   networks:
+     dockernet:
+       ipv4_address: 192.168.0.2
+   volumes:
+            - /home/hentai/Documents/docker/repo/docker-2/master/:/var/jenkins_home/
+networks:
+  dockernet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/24
