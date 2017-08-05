@@ -3,6 +3,6 @@ services:
   app:
     build:
       context: .
-      dockerfile: app.Dockerfile
+      dockerfile: application.Dockerfile
     volumes:
-      - ./initial/build/libs/:/opt/  
+      - ./initial/build/libs/:/opt/
