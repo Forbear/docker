@@ -1,25 +1,20 @@
 node('slave1'){
-
   stage('Git checkout') {
     sh 'rm -rf ./*'
     git branch: 'docker-day-2', url: 'https://github.com/Forbear/docker.git'
     sh 'cp -r docker-2/initial/ ./'
   }
-
   stage ('Building gradle.Dockerfile'){
     docker.build('gradle', '-f docker-2/gradle.Dockerfile .')
   }
-
   stage('Building') {
     docker.image('gradle').inside {
       sh 'gradle -b docker-2/initial/build.gradle build'
     }
   }
-
   stage ('Deploying') {
     sh 'docker-compose -f docker-2/docker-compose.yml up'
   }
-
   stage('Check') {
     sh 'sleep 5 && curl -LI http://127.0.0.1:8081'
     sh 'docker-compose stop'
