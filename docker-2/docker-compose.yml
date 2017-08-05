@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: application.Dockerfile
+      dockerfile: spring.Dockerfile
     volumes:
-      - /home/hentai/Documents/docer/repo/docker-2/initial/build/libs/:/opt/
+      - ./initial/build/libs/:/opt/
     ports: [ "127.0.0.1:8081:8080" ]
