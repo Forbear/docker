@@ -6,7 +6,7 @@ RUN     rpm --rebuilddb \
     &&  yum -y install java-devel \
     &&  yum -y install unzip \
     &&  yum -y install openssl \
-	&&	wget -O -ogradle.zip https://services.gradle.org/distributions/gradle-4.0.2-bin.zip \
+	&&	curl -L -ogradle.zip https://services.gradle.org/distributions/gradle-4.0.2-bin.zip \
     &&  unzip gradle.zip -d /opt/gradle \
     &&  rm gradle.zip \
     &&  yum clean all
