@@ -7,7 +7,7 @@ stage('Git checkout') {
 }
 
 stage ('Building docker gradle image'){
-	  docker.build ('jenkins/gradle:1.0', '-f docker-2/gradle.Dockerfile .')
+	  docker.build ('gradle', '-f docker-2/gradle.Dockerfile .')
 }
 
 stage('Building spring-boot app') {
@@ -21,7 +21,7 @@ stage('Deploying app') {
 }
 
 stage('Check') {
-  sh 'sleep 10 && curl -LI http://127.0.0.1:8081'
+  sh 'sleep 5 && curl -LI http://127.0.0.1:8081'
   sh 'docker-compose stop'
 }
 }
