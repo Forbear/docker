@@ -1,12 +1,8 @@
-version: '3'
+version: '2'
 services:
-  jenkins:
-    image: jenkins
-    volumes:
-    - ./master/:/var/jenkins_home/
-    ports:
-    - 8080:8080  
-  gradle:
+  app:
     build:
       context: .
-      dockerfile: gradle.Dockerfile
+      dockerfile: app.Dockerfile
+    volumes:
+      - ./initial/build/libs/:/opt/  
